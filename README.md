@@ -3,9 +3,10 @@
 
 # Setup
 1. Create a GitHub App
-2. set the following env variables based on the created app:
+2. set callback url to `http://127.0.0.1:9999/callback`
+3. set the following env variables based on the created app:
 ```
 CLIENT_ID=***
 CLIENT_SECRET=***
 ```
-3. ensure the URLs are correct
+4. ensure the URLs are correct
