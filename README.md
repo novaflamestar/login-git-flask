@@ -1,5 +1,5 @@
 # Git button example
-* example of a button login based on [github docs](https://docs.github.com/en/apps/creating-github-apps/writing-code-for-a-github-app/building-a-login-with-github-button-with-a-github-app).
+* example of a login button in python based on [github docs](https://docs.github.com/en/apps/creating-github-apps/writing-code-for-a-github-app/building-a-login-with-github-button-with-a-github-app).
 
 # Setup
 1. Create a GitHub App
