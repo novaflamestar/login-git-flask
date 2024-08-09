@@ -10,3 +10,12 @@ CLIENT_ID=***
 CLIENT_SECRET=***
 ```
 4. ensure the URLs are correct
+
+# Docker
+You can run this example with the docker compose file.
+1. setup your `.env` file with the `CLIENT_ID` and `CLIENT_SECRET`
+2. run the following commands:
+```bash
+docker compose build login-button
+docker compose run -p 9999:9999 login-button
+```

@@ -1,0 +1,7 @@
+services:
+  login-button:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 9999:9999
+    env_file: .env
