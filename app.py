@@ -1,4 +1,5 @@
 from flask import Flask, request, redirect
+import flask
 import requests
 import os
 from urllib.parse import parse_qs
@@ -29,8 +30,18 @@ def get_user(token: str) -> dict:
 
 @app.route('/')
 def hello():
+    token = flask.request.cookies.get("token")
+    if token:
+        user = get_user(token).get("login")
+        return f'Hello {user}! Welcome back! <a href="/logout">Logout</a>'
     link = f'<a href="https://github.com/login/oauth/authorize?client_id={CLIENT_ID}">Login with GitHub</a>'
     return link
+
+@app.route('/logout')
+def logout():
+    resp = flask.make_response(flask.redirect("/"))
+    resp.set_cookie("token", "")
+    return resp
 
 @app.route('/callback')
 def callback():
@@ -40,9 +51,9 @@ def callback():
     if not token_list:
         return redirect("/")
     token = token_list[0]
-    user = get_user(token)
-    body = f'Got code: {code}. Current user: {user["login"]}'
-    return body
+    resp = flask.make_response(flask.redirect("/"))
+    resp.set_cookie("token", token)
+    return resp
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="9999")
